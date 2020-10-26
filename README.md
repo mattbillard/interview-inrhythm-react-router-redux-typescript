@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# InRhythm Coding Challenge
+The purpose of this challenge is to test your skills in technologies that are used heavily on the project that you are a candidate for.  It will focus on building out a simple application using React, Redux and TypeScript.  This is an open ended interview, and there is no set amount that needs to be done in the allotted time.  We don't expect you to have every bit of JS syntax memorized, so feel free to use google/stack overflow when you are stuck.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Most of all we just want to see how you code.  Good luck!
 
-## Available Scripts
+# Instructions
 
-In the project directory, you can run:
+### Setup
+1. Clone the [repository](https://github.com/mattbillard/interview-react-router-redux-typescript) (you will need to be granted permission first)
+2. Create a branch called `YYYY/MM/DD-your-name` using today's date and your first and last name.
 
-### `yarn start`
+---
+### Part A
+You are tasked with creating a simple financial data application.  Users should be able to type a ticker from the list of valid tickers (below) and see the associated data.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Key features:**
+* Make a text input and submit button (unstyled)
+* Clicking submit should call the API `/overview/` endpoint of data API according the ticker typed in the text input
+* Store the return data in Redux
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Example endpoint:
+`/api/overview/MSFT.json`
 
-### `yarn test`
+### Valid Tickers
+```
+AAPL
+ADBE
+AMZN
+AVGO
+CMCSA
+CRM
+CSCO
+FB
+IBM
+INTC
+MA
+MSFT
+NFLX
+NVDA
+ORCL
+PYPL
+T
+TXN
+V
+VZ
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `yarn build`
+### Part B
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Now that you have the data, create a table to display it in the UI.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Key features:**
+* Each company should have its own row (you can pick which columns)
+* Each row should have a button to delete it from the UI and Redux store
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+### Part C 
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+At this point you and your interviewer will pick additional functionality to add (provided there is enough time).  Choices include:
+* CSS styling
+* Adding a UI library
+* Form validation & error notifications
+* UI/UX improvements of your choice
+* Adding links to balance sheet, cashflow, and income statement information (can be displayed on a new page, modal, etc)
+* Improve type safety of the application
