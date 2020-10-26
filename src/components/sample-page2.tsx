@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getSampleData, IStoreState } from '../../redux';
+import { getSampleData, IStoreState } from '../redux';
 
 export interface ISamplePage2View extends StateProps, DispatchProps { }
 

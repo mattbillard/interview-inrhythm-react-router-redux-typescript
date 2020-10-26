@@ -2,8 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
-import { SamplePage1, SamplePage2 } from '../../components';
-import { configureStore } from '../../redux';
+import { SamplePage1, SamplePage2 } from '../components';
+import { configureStore } from '../redux';
 
 const store = configureStore();
 
