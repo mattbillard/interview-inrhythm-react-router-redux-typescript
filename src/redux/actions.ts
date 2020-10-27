@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const SAMPLE_DATA_RECEIVED =  'SAMPLE_DATA_RECEIVED';
+export const OVERVIEW_RECEIVED =  'OVERVIEW_RECEIVED';
 
-export const getSampleData = () => async (dispatch) => {
-  const url = '/api/overview/MSFT.json';
+export const getOverview = (ticker: string) => async (dispatch) => {
+  const url = `/api/overview/${ticker}.json`;
   const response = await axios.get(url);
-  dispatch({ type: SAMPLE_DATA_RECEIVED, data: response.data});
+  dispatch({ type: OVERVIEW_RECEIVED, data: response.data});
 }

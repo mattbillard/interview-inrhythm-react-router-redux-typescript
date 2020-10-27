@@ -2,8 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
-import { SamplePage1, SamplePage2 } from '../components';
 import { configureStore } from '../redux';
+import './app.css';
+
+// TODO: pick whether you would like to work with a class-based or hooks-based component and uncomment the file
+import { OverviewPage } from './overview-page-hooks';
+// import { OverviewPage } from './overview-page-class';
 
 const store = configureStore();
 
@@ -12,13 +16,11 @@ export const App: React.FC = () => {
     <Provider store={store}>
       <BrowserRouter>
         <div>
-          <Link to="/sample-page1">Sample Page 1</Link> &nbsp;|&nbsp; 
-          <Link to="/sample-page2">Sample Page 2</Link>
+          <Link to="/overview">Overview</Link>
         </div>
         <Switch>
-          <Route path="/sample-page1" component={SamplePage1} />
-          <Route path="/sample-page2" component={SamplePage2} />
-          <Redirect from="/*" to="/sample-page1" />
+          <Route path="/overview" component={OverviewPage} />
+          <Redirect from="/*" to="/overview" />
         </Switch>
       </BrowserRouter>
     </Provider>

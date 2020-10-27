@@ -1,19 +1,24 @@
 import { Reducer } from 'redux';
 import {
-  SAMPLE_DATA_RECEIVED, 
+  OVERVIEW_RECEIVED, 
 } from './actions';
-import { ISampleReducerState } from '../types';
+
+export interface ISampleReducerState {
+  stocks: any;
+}
 
 const initialState: ISampleReducerState = {
-  sampleData: undefined,
+  stocks: [],
 };
 
 export const sampleReducer: Reducer<ISampleReducerState> = (state = initialState, action) => {
   switch (action.type) {
-    case SAMPLE_DATA_RECEIVED:
+    case OVERVIEW_RECEIVED:
+      const newStocks = [action.data];
+
       return { 
         ...state,
-        sampleData: action.data 
+        stocks: newStocks,
       };
   
     default:
