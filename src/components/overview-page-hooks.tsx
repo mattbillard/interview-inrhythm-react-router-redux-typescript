@@ -11,7 +11,8 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
   const [search, setSearch] = useState<string>('MSFT');
 
   const handleChange = (event) => {
-    setSearch(event.target.value);
+    const val = event.target.value.toUpperCase();
+    setSearch(val);
   }
 
   const handleDeleteStock = (ticker) => {
@@ -20,7 +21,8 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(getOverview(search))
+    dispatch(getOverview(search));
+    setSearch('');
   }
 
   return (
@@ -28,17 +30,20 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
       <h2>Sample Page 1 (Hooks Component)</h2>
 
       <form onSubmit={onSubmit}>
-        <input type="text" defaultValue={search} onChange={handleChange}/>
-        <button type="submit">Submit</button>
+      <div className="input-group mb-3">
+        <input className="form-control" type="search" value={search} onChange={handleChange}/>
+        <div className="input-group-append">
+          <button className="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
       </form>
 
-      {stocks.length > 0 && <table>
+      {stocks.length > 0 && 
+      <table className="table table-sm table-striped table-bordered">
         <thead>
           <tr>
+            <th>&nbsp;</th>
             {Object.keys(stocks[0]).map(key => {
-              if (key === 'Description') {
-                return null;
-              }
               return (
                 <th key={key}>{key}</th>
               )
@@ -52,15 +57,13 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
             return (
               <tr key={idx}>
                 <td>
-                  <button onClick={() => handleDeleteStock(ticker)}>X</button>
+                  <button className="btn btn-link" onClick={() => handleDeleteStock(ticker)}>
+                    <i className="fa fa-times" />
+                  </button>
                 </td>
-                {Object.entries(stock).map((entry: any) => {
-                  const key: string = entry[0];
-                  const value: string = entry[1];
-                  if (key === 'Description') {
-                    return null;
-                  }
+                {Object.entries(stock).map(([key, value]) => {
                   return (
+                    // @ts-ignore
                     <td key={key}>{value}</td>
                   )
                 })}

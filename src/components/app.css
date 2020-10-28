@@ -16,10 +16,14 @@ a {
   text-decoration: underline;
 }
 
-table {
+/* table {
   border-collapse: collapse;
 }
 
 th, td {
   border: solid 1px #333;
+} */
+
+body {
+  padding: 20px;
 }
