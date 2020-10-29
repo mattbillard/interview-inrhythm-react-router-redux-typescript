@@ -1,7 +1,21 @@
+import { link } from 'fs';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { getOverview, IStoreState, removeStock } from '../redux';
+
+const VALID_TICKERS = [
+'AAPL',
+'ADBE',
+'AMZN',
+'FB',
+'IBM',
+'MSFT',
+'NFLX',
+'ORCL',
+'INTC',
+'VZ',
+]
 
 export interface IOverviewPage { }
 
@@ -9,7 +23,7 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
   const stocks = useSelector((state: IStoreState) => state.sampleReducer.stocks);
   const dispatch = useDispatch();
   const [ticker, setTicker] = useState('');
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setTicker(value);
@@ -30,6 +44,12 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
       <form className="searchForm" onSubmit={handleGetOverview}>
 
       <input type="text" onChange={handleChange}/>
+      <ul>
+          {ticker.length > 0 ? 
+          VALID_TICKERS.filter(vt => vt.toLowerCase().includes(ticker.toLowerCase())).map(vt => (<li>{vt}</li>))
+          : null
+        }
+      </ul>
       {/* <button onClick={() => handleGetOverview('MSFT')}>Click me</button> */}
       <button className="searchBtn">Click me</button>
       </form>
