@@ -20,6 +20,28 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: solid 1px #333;
+}
+
+h2 {
+  /* margin: auto; */
+  text-align: center;
+}
+
+.searchForm {
+  margin: 2rem auto;
+}
+
+.searchForm input {
+  padding: 0.5rem;
+}
+
+.searchBtn {
+  background-color: #9cf;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin-left: 1rem;
 }
