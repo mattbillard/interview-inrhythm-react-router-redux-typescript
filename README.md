@@ -1,35 +1,41 @@
 # InRhythm Coding Challenge
-The purpose of this challenge is to test your skills in technologies that are used heavily on the project that you are a candidate for.  It will focus on building out a simple application using React, Redux and TypeScript.  This is an open ended interview, and there is no set amount that needs to be done in the allotted time.  We don't expect you to have every bit of JS syntax memorized, so feel free to use google/stack overflow when you are stuck.
+This coding challenge...
+- focuses on React, Redux, and TypeScript
+- is a basic stock app
+- is open ended with no set amount that needs to be done
 
-Most of all we just want to see how you code.
+Feel free to use Google or Stack Overflow if you get stuck or forget syntax
+
+Most of all we just want to see how you code
 
 # Instructions
 
 ### Setup
-1. Clone the [repository](https://github.com/mattbillard/interview-react-router-redux-typescript) (you will need to be granted permission first)
-2. Create a branch called `YYYY-MM-DD-your-name` using today's date and your first and last name.
-3. When you are done with this interview, please commit all your work and push your branch up to Github.
-4. Run the following 
+1. We will grant you access to our [Github repo](https://github.com/mattbillard/interview-react-router-redux-typescript)
+1. Clone the repo
+    ```
+    git clone https://github.com/mattbillard/interview-react-router-redux-typescript.git
+    cd interview-react-router-redux-typescript
+    ```
+1. Create a branch with todays date and your name in this format:  
+    `YYYY-MM-DD-your-name`
+1. Run the following 
     ```
     npm install
     npm start
     ```
-5. Your interviewer will now quickly walk you through the files and give you a choice of working with hooks-based or class-based components.
-6. You may now start. Good luck!
+1. We have already built some code for you. Try it out in your browser.
+1. We'll now walk you through the files...and give you a choice of working with React hooks or classes
+1. You may now start. Good luck!
 
 ---
-### Part A - Fetching data
-You are tasked with creating a simple financial data application.  Users should be able to type a ticker from the list of valid tickers (below) and see the associated data.
+### Part A - Fetch data
+Users should be able to type a stock ticker (from the list below) and see the company's data
 
-**Key features:**
-* Make a text input and submit button (unstyled)
-* Clicking submit should call the API `/overview/` endpoint of data API according the ticker typed in the text input
-* Store the return data in Redux
+1. Make a text input the user can type in
+1. Clicking the button should fetch that company's data and append it to the Redux store
 
-Example endpoint:
-`/api/overview/MSFT.json`
-
-### Valid Tickers
+#### Valid Tickers
 ```
 AAPL
 ADBE
@@ -45,21 +51,19 @@ VZ
 
 ---
 
-### Part B - Displaying a Table
+### Part B - Display a Table
 
-Now that you have the data, create a table to display it in the UI.
-
-**Key features:**
-* Each company should have its own row (you can pick which columns)
-* Each row should have a button to delete it from the UI and Redux store
+Now that you have the data, create a table to display it in the UI
+1. Each company should have its own row (you can pick which columns)
+1. Each row should have a button to delete it from the UI and Redux store
 
 ---
 ### Part C - Extras
 
-At this point you and your interviewer will pick additional functionality to add (provided there is enough time).  Choices include:
-* CSS styling
-* Adding a UI library
+At this point if there is enough time, you and your interviewer will pick additional functionality to add.  Choices include:
+* CSS styling or adding a UI library
 * Form validation & error notifications
+* Create a basic typeahead for the stock ticker input
 * UI/UX improvements of your choice
 * Adding links to balance sheet, cashflow, and income statement information (can be displayed on a new page, modal, etc)
 * Improve TypeScript of the application
