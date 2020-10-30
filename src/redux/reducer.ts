@@ -1,6 +1,7 @@
 import { Reducer } from 'redux';
 import {
-  OVERVIEW_RECEIVED, 
+  DELETE_ROW,
+  OVERVIEW_RECEIVED,
 } from './actions';
 
 export interface ISampleReducerState {
@@ -20,7 +21,13 @@ export const sampleReducer: Reducer<ISampleReducerState> = (state = initialState
         ...state,
         stocks: state.stocks.concat(newStocks),
       };
-  
+    case DELETE_ROW:
+        const deletedSymbol = action.data
+        return {
+          ...state,
+          stocks: state.stocks.filter(({Symbol})=>Symbol!==deletedSymbol)
+        }
+
     default:
       return state;
   }

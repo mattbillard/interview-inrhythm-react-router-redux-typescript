@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
-import { getOverview, IStoreState } from '../redux';
+import {getOverview, IStoreState, removeRow} from '../redux';
 
 export interface IOverviewPage { }
 
+export const ValidStocks = ['AAPL', 'ADBE', 'AMZN', 'FB', 'IBM', 'MSFT', 'NFLX', 'ORCL', 'INTC', 'VZ']
 export const OverviewPage: React.FC<IOverviewPage> = (props) => {
   const stocks = useSelector((state: IStoreState) => state.sampleReducer.stocks);
   const dispatch = useDispatch();
@@ -14,23 +15,43 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
     dispatch(getOverview(ticker));
   }
 
+  const handleRemoveRow = (symbol: string) => {
+    dispatch(removeRow(symbol))
+  }
+
   return (
     <div>
       <h2>Overview Page (Hooks-Based Component)</h2>
 
       <input type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)}/>
+      {ValidStocks.filter(stock=>stock.toLowerCase().includes(searchTerm.toLowerCase())).map(stock=>{
+        return (
+            <>
+              <button onClick={() => handleGetOverview(stock)}>{stock}</button>
+            </>
+        )
+      })}
 
-      <button onClick={() => handleGetOverview(searchTerm)}>Click me</button>
-        {stocks.map(({Symbol,AssetType,Name,Exchange})=>{
-            return(
+        <table>
+          <tr>
+            <th/>
+            <th>Symbol</th>
+            <th>AssetType</th>
+            <th>Name</th>
+            <th>Exchange</th>
+          </tr>
+          {stocks.map(({Symbol,AssetType,Name,Exchange})=>{
+              return(
                 <tr key={Symbol}>
-                    <td>{Symbol}</td>
-                    <td>{AssetType}</td>
-                    <td>{Name}</td>
-                    <td>{Exchange}</td>
+                <td><button onClick={()=>handleRemoveRow(Symbol)}>Remove This Row</button></td>
+                <td>{Symbol}</td>
+                <td>{AssetType}</td>
+                <td>{Name}</td>
+                <td>{Exchange}</td>
                 </tr>
-            )
-        })}
+              )
+          })}
+        </table>
       
     </div>
   );
