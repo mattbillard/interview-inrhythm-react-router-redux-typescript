@@ -18,7 +18,7 @@ export const sampleReducer: Reducer<ISampleReducerState> = (state = initialState
 
       return { 
         ...state,
-        stocks: newStocks,
+        stocks: state.stocks.concat(newStocks),
       };
   
     default:
