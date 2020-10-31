@@ -24,7 +24,7 @@ Most of all we just want to see how you code
     npm install
     npm start
     ```
-    <sup>If using pnpm, start the app using `FAST_REFRESH=false pnpm start` as suggested in [this issue](https://github.com/pnpm/pnpm/issues/2957).</sup>
+    <sup>If using pnpm, start the app using `FAST_REFRESH=false pnpm start`.<sup>[1][^1]</sup></sup>
 1. We have already built some code for you. Try it out in your browser.
 1. We'll now walk you through the files...and give you a choice of working with React hooks or classes
 1. You may now start. Good luck!
@@ -68,3 +68,5 @@ At this point if there is enough time, you and your interviewer will pick additi
 * UI/UX improvements of your choice
 * Adding links to balance sheet, cashflow, and income statement information (can be displayed on a new page, modal, etc)
 * Improve TypeScript of the application
+
+[^1]: https://github.com/pnpm/pnpm/issues/2957
