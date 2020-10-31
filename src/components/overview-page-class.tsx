@@ -2,7 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getOverview, deleteStock, IStoreState } from '../redux';
-
+const TickerList = [
+  'AAPL',
+  'ADBE',
+  'AMZN',
+  'FB',
+  'IBM',
+  'MSFT',
+  'NFLX',
+  'ORCL',
+  'INTC',
+  'VZ'
+];
 export interface IOverviewPageView extends StateProps, DispatchProps { }
 export interface IOverViewPageState {
   stockTickerInput: string; // eventually make this enum
@@ -31,6 +42,22 @@ export class OverviewPageView extends React.Component<IOverviewPageView, {}> {
           }}
           value={this.state.stockTickerInput} />
 
+        <div className="ticker-suggestions">
+          {
+            this.state.stockTickerInput && TickerList
+              .filter(ticker => ticker.toUpperCase().includes(this.state.stockTickerInput.toUpperCase()))
+              .map(ticker => 
+                <div 
+                  onClick={
+                    () => this.setState(
+                      { stockTickerInput: ticker }, 
+                      () => this.handleGetOverview(ticker))
+                  }>
+                      {ticker}
+                </div>)
+          }
+        </div>
+
         <button onClick={() => this.handleGetOverview(this.state.stockTickerInput)}>Click me</button>
         <table>
           <thead>
@@ -43,7 +70,7 @@ export class OverviewPageView extends React.Component<IOverviewPageView, {}> {
           </thead>
           <tbody>
             {
-              stocks.map(stock => 
+              stocks.map(stock =>
                 <tr key={stock.Symbol}>
                   <td>{stock.Symbol}</td>
                   <td>{stock.EPS}</td>
