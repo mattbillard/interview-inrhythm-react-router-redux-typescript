@@ -24,6 +24,7 @@ Most of all we just want to see how you code
     npm install
     npm start
     ```
+    <sup>If using pnpm, start the app using `FAST_REFRESH=false pnpm start` as suggested in [this issue](https://github.com/pnpm/pnpm/issues/2957).</sup>
 1. We have already built some code for you. Try it out in your browser.
 1. We'll now walk you through the files...and give you a choice of working with React hooks or classes
 1. You may now start. Good luck!
