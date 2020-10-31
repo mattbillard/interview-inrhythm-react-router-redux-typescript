@@ -5,16 +5,16 @@ import { getOverview, removeTicker, IStoreState } from '../redux';
 
 
 export enum TickersEnum {
-  AAPL,
-  ADBE,
-  AMZN,
-  FB,
-  IBM,
-  MSFT,
-  NFLX,
-  ORCL,
-  INTC,
-  VZ,
+  AAPL = 'AAPL',
+  ADBE = 'ADBE',
+  AMZN = 'AMZN',
+  FB = 'FB',
+  IBM = 'IBM',
+  MSFT = 'MSFT',
+  NFLX = 'NFLX',
+  ORCL = 'ORCL',
+  INTC = 'INTC',
+  VZ = 'VZ',
 }
 export interface IOverviewPage { }
 
@@ -31,6 +31,26 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
     dispatch(removeTicker(ticker));
   };
 
+  const tickerSuggestions = () =>
+    <>
+      {
+        Object.values(TickersEnum)
+          .filter(ticker => ticker.toUpperCase().includes(tickerInput))
+          .map(filteredTicker =>
+            <div
+              onClick={
+                () => {
+                  updateTickerInput(filteredTicker);
+                  handleGetOverview(filteredTicker);
+                }
+              }
+            >
+              {filteredTicker}
+            </div>
+          )
+      }
+    </>;
+
   return (
     <div>
       <h2>Overview Page (Hooks-Based Component)</h2>
@@ -41,10 +61,16 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
       >
         <input
           name="ticker"
-          onChange={(e) => updateTickerInput(e.target.value)}
+          onChange={(e) => updateTickerInput(e.target.value.toUpperCase())}
           type="search"
+          autoComplete="off"
           value={tickerInput}
         />
+        <div className="typeahead-suggestion">
+          {
+            tickerInput && tickerSuggestions()
+          }
+        </div>
         <button type="submit" onClick={() => handleGetOverview(tickerInput)}>Submit</button>
       </form>
 
