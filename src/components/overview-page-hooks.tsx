@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { getOverview, removeTicker, IStoreState } from '../redux';
@@ -21,6 +21,7 @@ export interface IOverviewPage { }
 export const OverviewPage: React.FC<IOverviewPage> = (props) => {
   const stocks = useSelector((state: IStoreState) => state.sampleReducer.stocks);
   const [tickerInput, updateTickerInput] = useState<string>('');
+  const [typeaheadHeight, updateTypeaheadHeight] = useState<string>('0');
   const dispatch = useDispatch();
 
   const handleGetOverview = (ticker: string) => {
@@ -51,27 +52,47 @@ export const OverviewPage: React.FC<IOverviewPage> = (props) => {
       }
     </>;
 
+  useEffect(() => {
+    const typeahead = document.querySelector('.typeahead-suggestion');
+    updateTypeaheadHeight((typeahead?.clientHeight || 0) + '');
+    console.log(typeahead?.clientHeight);
+  }, [tickerInput]);
+
   return (
     <div>
       <h2>Overview Page (Hooks-Based Component)</h2>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        console.log('form submitted');
-      }}
+      <form
+        className="form-inline"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleGetOverview(tickerInput);
+        }}
       >
-        <input
-          name="ticker"
-          onChange={(e) => updateTickerInput(e.target.value.toUpperCase())}
-          type="search"
-          autoComplete="off"
-          value={tickerInput}
-        />
-        <div className="typeahead-suggestion">
+        <div className="form-group">
+          <input
+            className="form-control"
+            name="ticker"
+            onChange={(e) => updateTickerInput(e.target.value.toUpperCase())}
+            type="search"
+            autoComplete="off"
+            value={tickerInput}
+          />
+          <button
+            className="btn btn-primary"
+            type="submit"
+          >
+            Submit
+        </button>
+        </div>
+        <div
+          style={{
+            transform: `translateY(${typeaheadHeight}px)`
+          }}
+          className="typeahead-suggestion">
           {
             tickerInput && tickerSuggestions()
           }
         </div>
-        <button type="submit" onClick={() => handleGetOverview(tickerInput)}>Submit</button>
       </form>
 
       <table>

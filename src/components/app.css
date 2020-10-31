@@ -23,3 +23,17 @@ table {
 th, td {
   border: solid 1px #333;
 }
+
+form {
+  position: relative;
+}
+
+.typeahead-suggestion {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+}
+
+.typeahead-suggestion > * {
+  padding: 10px;
+}
