@@ -8,7 +8,8 @@ Feel free to use Google or Stack Overflow if you get stuck or forget syntax
 
 Most of all we just want to see how you code
 
-# Instructions
+---
+## Instructions
 
 ### Setup
 1. We will grant you access to our [Github repo](https://github.com/mattbillard/interview-react-router-redux-typescript)
@@ -29,6 +30,7 @@ Most of all we just want to see how you code
 1. You may now start. Good luck!
 
 ---
+
 ### Part A - Fetch data
 Users should be able to type a stock ticker (from the list below) and see the company's data
 
@@ -58,6 +60,7 @@ Now that you have the data, create a table to display it in the UI
 1. Each row should have a button to delete it from the UI and Redux store
 
 ---
+
 ### Part C - Extras
 
 At this point if there is enough time, you and your interviewer will pick additional functionality to add.  Choices include:
@@ -67,3 +70,10 @@ At this point if there is enough time, you and your interviewer will pick additi
 * UI/UX improvements of your choice
 * Adding links to balance sheet, cashflow, and income statement information (can be displayed on a new page, modal, etc)
 * Improve TypeScript of the application
+
+---
+
+## Troubleshooting
+- pnpm has trouble with create-react-app. You will need to start it with  
+  `FAST_REFRESH=false pnpm start`  
+  Click [here for more info](https://github.com/pnpm/pnpm/issues/2957)
