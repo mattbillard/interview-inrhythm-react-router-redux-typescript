@@ -69,11 +69,10 @@ At this point if there is enough time, you and your interviewer will pick additi
 * Create a basic typeahead for the stock ticker input
 * UI/UX improvements of your choice
 * Adding links to balance sheet, cashflow, and income statement information (can be displayed on a new page, modal, etc)
+* Write tests
 * Improve TypeScript of the application
 
 ---
 
-## Troubleshooting
-- pnpm has trouble with create-react-app. You will need to start it with  
-  `FAST_REFRESH=false pnpm start`  
+## Troubleshooting - pnpm has trouble with create-react-app. You will need to start it with `FAST_REFRESH=false pnpm start`  
   Click [here for more info](https://github.com/pnpm/pnpm/issues/2957)
